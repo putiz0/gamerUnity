@@ -4,6 +4,7 @@ public class Inimigo : MonoBehaviour
 {
     public float velocidadeMovimento = 2f;
     public float danoFisico = 50f;
+    public float chanseCongelar = 0.0f;
     public int Garregando_Ouro = 0;
     public int Garregando_Exp = 0;
 
@@ -30,7 +31,7 @@ public class Inimigo : MonoBehaviour
 
         status.SetStat(Stat.DefesaFisica, 2f);
         status.SetStat(Stat.ResistenciaFisica, 0.1f); // 10%
-        status.SetStat(Stat.CongelamentoChance, 1.0f);
+        status.SetStat(Stat.CongelamentoChance, chanseCongelar);
 
         status.SetStat(Stat.Ouro, Garregando_Ouro);
         status.SetStat(Stat.Experiencia, Garregando_Exp);

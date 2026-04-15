@@ -6,9 +6,11 @@ public class InimigoAtirador : MonoBehaviour
     public float velocidadeMovimento = 0f;
     public float velocidadeAtaque = 1f;
     public float danoFisico = 6f;
+    public float danoGelo = 0f;
     public int Garregando_Ouro = 0;
     public int Garregando_Exp = 0;
     public float forcaDoProtetio = 5f;
+    public float chanseCongelar = 0.0f;
     public GameObject player;
     public GameObject projecaoPrefab;
     private EntityStatus status;
@@ -26,7 +28,7 @@ public class InimigoAtirador : MonoBehaviour
         status.SetStat(Stat.VidaAtual, status.GetStat(Stat.VidaMaxima));
 
         status.SetStat(Stat.AtaqueFisico, danoFisico);
-        status.SetStat(Stat.AtaqueDeGelo,10f);
+        status.SetStat(Stat.AtaqueDeGelo,danoGelo);
         status.SetStat(Stat.VelocidadeDeMovimento, velocidadeMovimento);
 
         status.SetStat(Stat.VelocidadeDeAtaque, velocidadeAtaque);
@@ -34,7 +36,7 @@ public class InimigoAtirador : MonoBehaviour
 
         status.SetStat(Stat.DefesaFisica, 2f);
         status.SetStat(Stat.ResistenciaFisica, 0.1f); // 10%
-        status.SetStat(Stat.CongelamentoChance, 0f);
+        status.SetStat(Stat.CongelamentoChance, chanseCongelar);
 
         status.SetStat(Stat.Ouro, Garregando_Ouro);
         status.SetStat(Stat.Experiencia, Garregando_Exp);

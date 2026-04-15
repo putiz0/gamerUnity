@@ -62,6 +62,13 @@ public class Projetil : MonoBehaviour
         Destroy(gameObject);
         return;
     }
+      // Colidiu com outro projétil
+    if (other.CompareTag("projetion"))
+    {
+        Destroy(other.gameObject);  // destrói o outro
+        Destroy(gameObject);        // destrói este
+        return;
+    }
 
     // Tenta causar dano em EntityStatus
     EntityStatus alvo = other.GetComponent<EntityStatus>();
