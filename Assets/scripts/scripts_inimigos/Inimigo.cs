@@ -9,12 +9,14 @@ public class Inimigo : MonoBehaviour
     public int Garregando_Exp = 0;
 
     private EntityStatus status;
+    private Rigidbody2D rb;
     public EntityStatus atacante;
     private Transform player;
 
     void Awake()
     {
         status = GetComponent<EntityStatus>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Start()
@@ -53,11 +55,11 @@ public class Inimigo : MonoBehaviour
             status.QueimaduraPorGelo(); 
             return;
         }
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            player.position,
-            status.GetStat(Stat.VelocidadeDeMovimento) * Time.fixedDeltaTime
-        );
+        
+          // Calcula direção e movimento usando física
+        Vector2 direcao = (player.position - transform.position).normalized;
+        Vector2 novaPosicao = rb.position + direcao * velocidade * Time.fixedDeltaTime;
+        rb.MovePosition(novaPosicao);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
