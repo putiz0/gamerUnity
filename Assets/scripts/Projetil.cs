@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Projetil : MonoBehaviour
@@ -48,25 +49,34 @@ public class Projetil : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other)
+{
+    // Ignora o dono
+    if (other.gameObject == dono) return;
+
+    // Ignora triggers que não são paredes (opcional)
+    if (other.isTrigger && !other.CompareTag("wall")) return;
+
+    // Colidiu com parede
+    if (other.CompareTag("wall"))
     {
-        if (other.gameObject == dono) return;
+        Destroy(gameObject);
+        return;
+    }
 
-        EntityStatus alvo = other.GetComponent<EntityStatus>();
-        if (alvo != null)
-        {
-            if (danoFisico > 0)
-                alvo.ReceberDano(Stat.AtaqueFisico, danoFisico, atacante);
-
-            if (danoFogo > 0)
-                alvo.ReceberDano(Stat.AtaqueDeFogo, danoFogo, atacante);
-
-            if (danoGelo > 0)
-                alvo.ReceberDano(Stat.AtaqueDeGelo, danoGelo, atacante);
-
-            if (danoEletrico > 0)
-                alvo.ReceberDano(Stat.AtaqueEletrico, danoEletrico, atacante);
-        }
-
+    // Tenta causar dano em EntityStatus
+    EntityStatus alvo = other.GetComponent<EntityStatus>();
+    if (alvo != null)
+    {
+        if (danoFisico > 0)
+            alvo.ReceberDano(Stat.AtaqueFisico, danoFisico, atacante);
+        if (danoFogo > 0)
+            alvo.ReceberDano(Stat.AtaqueDeFogo, danoFogo, atacante);
+        if (danoGelo > 0)
+            alvo.ReceberDano(Stat.AtaqueDeGelo, danoGelo, atacante);
+        if (danoEletrico > 0)
+            alvo.ReceberDano(Stat.AtaqueEletrico, danoEletrico, atacante);
+        
         Destroy(gameObject);
     }
+}
 }
