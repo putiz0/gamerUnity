@@ -289,24 +289,21 @@ public class EntityStatus : MonoBehaviour
         stats[Stat.VidaAtual] = Mathf.Clamp(vidaAtual, 0f, vidaMax);
     }
     
-    public void AddExp(int exp_)
+   public void AddExp(int exp_)
+{
+    stats[Stat.Experiencia] += exp_;
+    if (stats[Stat.Experiencia] >= stats[Stat.Nivel] * 100)
     {
-        stats[Stat.Experiencia] += exp_;
-    {
-        stats[Stat.Experiencia] += exp_;
-        if(stats[Stat.Experiencia] >= stats[Stat.Nivel] * 100)
-        {
-            stats[Stat.Experiencia] = 0;
-            stats[Stat.Nivel]++;
+        stats[Stat.Experiencia] = 0;
+        stats[Stat.Nivel]++;
 
-            VidaUI ui = VidaUI.GetActive();
-            if (ui != null)
-            {
-                ui.Info_up_Text();
-            }
+        VidaUI ui = VidaUI.GetActive();
+        if (ui != null)
+        {
+            ui.Info_up_Text();
         }
-      }
-      }
+    }
+}
        protected void VerificarMorte()
 {
 

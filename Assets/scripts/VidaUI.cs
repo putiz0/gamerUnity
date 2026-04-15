@@ -213,7 +213,7 @@ public class VidaUI : MonoBehaviour
 
     internal static VidaUI GetActive()
     {
-        throw new NotImplementedException();
+        return Instance;
     }
 
 }

@@ -88487,8 +88487,8 @@ Transform:
   m_GameObject: {fileID: 782548569}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.243, y: 3.4294, z: -10}
-  m_LocalScale: {x: 17.732779, y: 10.057076, z: 1}
+  m_LocalPosition: {x: -5.9893, y: -1.3438, z: -10}
+  m_LocalScale: {x: 18.239935, y: 0.5108995, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 631383483}
@@ -107716,9 +107716,19 @@ MonoBehaviour:
   target: {fileID: 679027637}
   slider_Hp: {fileID: 71152293}
   slider_Exp: {fileID: 1391079200}
-  Nivel_up_tela: {fileID: 0}
-  Info_up: []
-  Popup: {fileID: 0}
+  Nivel_up_tela: {fileID: 1830911655}
+  Info_up:
+  - {fileID: 204849429}
+  - {fileID: 838278866}
+  - {fileID: 1290768895}
+  - {fileID: 1543813753}
+  - {fileID: 1008652377}
+  - {fileID: 497875408}
+  - {fileID: 112046427}
+  - {fileID: 855632294}
+  - {fileID: 524834437}
+  - {fileID: 1719299743}
+  Popup: {fileID: 2914153221446987568, guid: 72afbd1dc1338c24a808c733fa6d48f3, type: 3}
   aumentoHpMaximo: 10
   aumentoAtkPct: 0.1
   aumentoVelAtkPct: 0.1
