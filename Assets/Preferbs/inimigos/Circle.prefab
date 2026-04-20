@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 4425873035727110432}
   - component: {fileID: 5862243324404792364}
   - component: {fileID: -6901033676555024160}
+  - component: {fileID: 2822425662475701352}
   m_Layer: 0
   m_Name: Circle
   m_TagString: inimigo
@@ -142,8 +143,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.24, y: 0.77, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9129174197499983463}
   m_Father: {fileID: 0}
@@ -195,8 +196,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9528302, g: 0.112362035, b: 0.112362035, a: 1}
+  m_Sprite: {fileID: 8664507672882963953, guid: 6754af3cbb36d444284cfd25691df4f9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -258,8 +259,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: -0.002141428, y: 0}
+  m_Radius: 0.06490807
 --- !u!114 &5862243324404792364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +302,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &2822425662475701352
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6521970419797650721}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc9ef100fba49e648aaa8412f881adde, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6596805146451036572
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +348,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6596805146451036572}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 12, y: 12, z: 12}
   m_ConstrainProportionsScale: 1
@@ -336,7 +359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -245.9}
+  m_AnchoredPosition: {x: 0, y: -245.8991}
   m_SizeDelta: {x: 152.3, y: 28.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8181376271579665371
@@ -494,16 +517,16 @@ RectTransform:
   m_GameObject: {fileID: 7280257794349960312}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.001, y: 0.001, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.00021999999, y: 0.00021999999, z: 0.21999998}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2098550895792084732}
   m_Father: {fileID: 7328880496989267848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.09}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: 0.009, y: 0.2}
+  m_SizeDelta: {x: 1942.1128, y: 936.267}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5679645908246691378
 Canvas:

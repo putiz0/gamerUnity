@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Camera cam;
     private playerStatus status;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     private Vector2 movimento;
 
@@ -17,6 +19,8 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
         status = GetComponent<playerStatus>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // ======================
@@ -26,12 +30,9 @@ public class Player : MonoBehaviour
     {
         movimento = context.ReadValue<Vector2>();
 
-        float velocidade = status.GetStat(Stat.VelocidadeDeMovimento) *
-                           (1f + Mathf.Max(0f, status.GetStat(Stat.BonusVelocidadeMovimentoPct)));
-
-        if (status.EstaCongelado() && velocidade > 0)
+        if (status.EstaCongelado() && movimento.sqrMagnitude > 0f)
         {
-            status.QueimaduraPorGelo(); // nome correto
+            status.QueimaduraPorGelo();
         }
     }
 
@@ -56,7 +57,7 @@ public class Player : MonoBehaviour
         }
 
         rb.linearVelocity = movimento * velocidade;
-        
+        AtualizarAnimacao();
     }
     void Update()
     {
@@ -64,6 +65,31 @@ public class Player : MonoBehaviour
         {
             inventarioMenagen.Instance.DescateItem();
             Debug.Log("o G foi apertado");
+        }
+    }
+
+    void AtualizarAnimacao()
+    {
+        if (animator == null)
+        {
+            return;
+        }
+
+        if (movimento.sqrMagnitude > 0.01f)
+        {
+            if (spriteRenderer != null && movimento.x < 0f)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (spriteRenderer != null && movimento.x > 0f)
+            {
+                spriteRenderer.flipX = false;
+            }
+            animator.Play("andando");
+        }
+        else
+        {
+            animator.Play("parado");
         }
     }
 

@@ -318,13 +318,43 @@ public class EntityStatus : MonoBehaviour
 
     protected virtual void Morte()
     {
+        if (this.gameObject.tag == "Player")
+        {
+            telaDeMorte tela = FindFirstObjectByType<telaDeMorte>();
+            if (tela != null)
+            {
+                tela.Ativar();
+            }
+
+            Player playerController = GetComponent<Player>();
+            if (playerController != null)
+                playerController.enabled = false;
+
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (rb != null)
+                rb.simulated = false;
+
+            return;
+        }
+
         if (this.gameObject.tag != "Player")
         {
-            inventarioMenagen.Instance.AddGolde(Mathf.RoundToInt(GetStat(Stat.Ouro)));
-            EntityStatus player = GameObject.FindGameObjectWithTag("Player").GetComponent<EntityStatus>();
-            float bonusExp = player.GetStat(Stat.BonusExperienciaPct);
-            int expFinal = Mathf.RoundToInt(GetStat(Stat.Experiencia) * (1f + Mathf.Max(0f, bonusExp)));
-            player.AddExp(expFinal);
+            if (inventarioMenagen.Instance != null)
+            {
+                inventarioMenagen.Instance.AddGolde(Mathf.RoundToInt(GetStat(Stat.Ouro)));
+            }
+
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+            {
+                EntityStatus player = playerObj.GetComponent<EntityStatus>();
+                if (player != null)
+                {
+                    float bonusExp = player.GetStat(Stat.BonusExperienciaPct);
+                    int expFinal = Mathf.RoundToInt(GetStat(Stat.Experiencia) * (1f + Mathf.Max(0f, bonusExp)));
+                    player.AddExp(expFinal);
+                }
+            }
         }
         if(this.gameObject.tag == "inimigo")
         {

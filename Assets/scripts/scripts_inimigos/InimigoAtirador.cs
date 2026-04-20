@@ -10,6 +10,7 @@ public class InimigoAtirador : MonoBehaviour
     public int Garregando_Ouro = 0;
     public int Garregando_Exp = 0;
     public float forcaDoProtetio = 5f;
+    public float distanciaDoAtaque = 0.2f;
     public float chanseCongelar = 0.0f;
     public GameObject player;
     public GameObject projecaoPrefab;
@@ -32,7 +33,7 @@ public class InimigoAtirador : MonoBehaviour
         status.SetStat(Stat.VelocidadeDeMovimento, velocidadeMovimento);
 
         status.SetStat(Stat.VelocidadeDeAtaque, velocidadeAtaque);
-        status.SetStat(Stat.DistanciaDoAtaque, 10f);
+        status.SetStat(Stat.DistanciaDoAtaque, distanciaDoAtaque);
 
         status.SetStat(Stat.DefesaFisica, 2f);
         status.SetStat(Stat.ResistenciaFisica, 0.1f); // 10%
