@@ -22,4 +22,5 @@ public class weopon : ScriptableObject
 
     [Header("Visual")]
     public Sprite weopon_icon;
+    public GameObject weopon_projetion;
 }

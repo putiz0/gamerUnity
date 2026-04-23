@@ -111,8 +111,9 @@ public class Player : MonoBehaviour
         mouseWorld.z = 0;
 
         Vector3 direcao = (mouseWorld - transform.position).normalized;
-
         GameObject proj = Instantiate(projecaoPrefab, transform.position, Quaternion.identity);
+        float rotZ = Mathf.Atan2(direcao.y, direcao.x) * Mathf.Rad2Deg;
+        proj.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
 
         Rigidbody2D rbp = proj.GetComponent<Rigidbody2D>();
         rbp.linearVelocity = direcao * 10f;

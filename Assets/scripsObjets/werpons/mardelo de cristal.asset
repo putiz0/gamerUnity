@@ -23,3 +23,4 @@ MonoBehaviour:
   bonusStunChance: 0
   bonusCongelamentoChance: 0
   weopon_icon: {fileID: 4597500548733779107, guid: 1065bea9b64fcee489e9eb6dd4c314f6, type: 3}
+  weopon_projetion: {fileID: 5474526288860390211, guid: aed896a4c74ce504c981498fcce904d8, type: 3}

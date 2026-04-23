@@ -14,9 +14,15 @@ public class EntityStatus : MonoBehaviour
     private float danoGeloArmazenado = 0f;
     public spamwMenege spamw_Menege;
     bool morreu = false;
+    private SpriteRenderer spriteRenderer;
+    private Color corOriginal;
 
     protected virtual void Awake()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+            corOriginal = spriteRenderer.color;
+
         stats[Stat.VidaMaxima] = 10f;
         stats[Stat.VidaAtual] = stats[Stat.VidaMaxima];
         stats[Stat.Escudo] = 0f;
@@ -36,6 +42,10 @@ public class EntityStatus : MonoBehaviour
 
         stats[Stat.Nivel] = 1;
         stats[Stat.Experiencia] = 0f;
+    }
+    void Update()
+    {
+        danoPisca();
     }
 
     // ======================
@@ -57,6 +67,8 @@ public class EntityStatus : MonoBehaviour
 
             Destroy(new_Popup, 1f);
         }
+        if (spriteRenderer != null)
+            spriteRenderer.color = Color.red;
         if (tipoAtaque == Stat.AtaqueVerdadeiro)
         {
             AplicarDanoFinal(dano, atacante);
@@ -304,6 +316,19 @@ public class EntityStatus : MonoBehaviour
         }
     }
 }
+    void danoPisca()
+    {
+        if (spriteRenderer == null) return;
+
+        if (spriteRenderer.color == corOriginal)
+        {
+
+        }
+        else
+        {
+            spriteRenderer.color = Color.Lerp(spriteRenderer.color, corOriginal, 8f * Time.deltaTime);
+        }
+    }
        protected void VerificarMorte()
 {
 

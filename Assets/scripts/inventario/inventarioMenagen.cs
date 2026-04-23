@@ -22,6 +22,8 @@ public class inventarioMenagen : MonoBehaviour
 
     // 🧠 guardar arma atual
     private weopon armaAtual;
+    private Player playerController;
+    private GameObject projectilePadrao;
 
      private void Awake()
     {
@@ -37,7 +39,16 @@ public class inventarioMenagen : MonoBehaviour
 
     void Start()
     {
-        player_status = GameObject.FindGameObjectWithTag("Player").GetComponent<playerStatus>();
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            player_status = playerObj.GetComponent<playerStatus>();
+            playerController = playerObj.GetComponent<Player>();
+            if (playerController != null)
+            {
+                projectilePadrao = playerController.projecaoPrefab;
+            }
+        }
 
         if (invetario_.Count > 0)
             Selecweopon(1);
@@ -93,41 +104,67 @@ public class inventarioMenagen : MonoBehaviour
         weopon arma = invetario_[hotkey_ - 1];
 
         // 🔥 RESETA stats antes (IMPORTANTE)
-        ResetStats();
-
         if (arma != null)
         {
             armaAtual = arma;
+            AplicarStatsBasePlayer();
+            AplicarStatsArma(arma);
+        }
+        else
+        {
+            armaAtual = null;
+            AplicarStatsBasePlayer();
 
-            // 💥 DANOS
-            player_status.SetStat(Stat.AtaqueFisico, arma.danoFisico);
-            player_status.SetStat(Stat.AtaqueDeFogo, arma.danoFogo);
-            player_status.SetStat(Stat.AtaqueDeGelo, arma.danoGelo);
-            player_status.SetStat(Stat.AtaqueEletrico, arma.danoEletrico);
-
-            // ⚔️ COMBATE
-            player_status.SetStat(Stat.VelocidadeDeAtaque, arma.weopon_speed);
-            player_status.SetStat(Stat.DistanciaDoAtaque, arma.weopon_distancia);
-
-            // ❄️ STATUS
-            player_status.AddStat(Stat.StunChance, arma.bonusStunChance);
-            player_status.AddStat(Stat.CongelamentoChance, arma.bonusCongelamentoChance);
+            if (playerController != null)
+            {
+                playerController.projecaoPrefab = projectilePadrao;
+            }
         }
 
         selected_slot = hotkey_;
         RefrecheInventario();
     }
 
-    // 🧠 MUITO IMPORTANTE
-    void ResetStats()
+    void AplicarStatsBasePlayer()
     {
-        player_status.SetStat(Stat.AtaqueFisico, 0);
-        player_status.SetStat(Stat.AtaqueDeFogo, 0);
-        player_status.SetStat(Stat.AtaqueDeGelo, 0);
-        player_status.SetStat(Stat.AtaqueEletrico, 0);
+        if (player_status == null) return;
 
-        player_status.SetStat(Stat.StunChance, 0);
-        player_status.SetStat(Stat.CongelamentoChance, 0);
+        player_status.SetStat(Stat.AtaqueFisico, player_status.ataqueFisico);
+        player_status.SetStat(Stat.AtaqueDeFogo, 0f);
+        player_status.SetStat(Stat.AtaqueDeGelo, player_status.ataqueDeGelo);
+        player_status.SetStat(Stat.AtaqueEletrico, 0f);
+
+        player_status.SetStat(Stat.VelocidadeDeAtaque, player_status.velocidadeDeAtaque);
+        player_status.SetStat(Stat.DistanciaDoAtaque, player_status.distanciaDoAtaque);
+        player_status.SetStat(Stat.VelocidadeDeMovimento, player_status.velocidadeDeMovimento);
+        player_status.SetStat(Stat.RouboDeVida, player_status.RouboDeVida);
+
+        player_status.SetStat(Stat.StunChance, 0f);
+        player_status.SetStat(Stat.CongelamentoChance, 0f);
+    }
+
+    void AplicarStatsArma(weopon arma)
+    {
+        if (player_status == null || arma == null) return;
+
+        // 💥 DANOS
+        player_status.SetStat(Stat.AtaqueFisico, arma.danoFisico);
+        player_status.SetStat(Stat.AtaqueDeFogo, arma.danoFogo);
+        player_status.SetStat(Stat.AtaqueDeGelo, arma.danoGelo);
+        player_status.SetStat(Stat.AtaqueEletrico, arma.danoEletrico);
+
+        // ⚔️ COMBATE
+        player_status.SetStat(Stat.VelocidadeDeAtaque, arma.weopon_speed);
+        player_status.SetStat(Stat.DistanciaDoAtaque, arma.weopon_distancia);
+
+        // ❄️ STATUS
+        player_status.AddStat(Stat.StunChance, arma.bonusStunChance);
+        player_status.AddStat(Stat.CongelamentoChance, arma.bonusCongelamentoChance);
+
+        if (playerController != null)
+        {
+            playerController.projecaoPrefab = arma.weopon_projetion;
+        }
     }
 
     void InvetarioSelec()
