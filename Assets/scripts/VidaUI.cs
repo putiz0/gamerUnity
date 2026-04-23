@@ -125,25 +125,25 @@ public class VidaUI : MonoBehaviour
                 target.SetStat(Stat.VidaAtual, target.GetStat(Stat.VidaMaxima));
                 break;
             case "atk":
-                target.AddStat(Stat.AtaqueFisico, target.GetStat(Stat.AtaqueFisico) * aumentoAtkPct);
+                target.AddStat(Stat.BonusAtaqueFisicoPct, aumentoAtkPct);
                 break;
             case "velatk":
-                target.AddStat(Stat.VelocidadeDeAtaque, target.GetStat(Stat.VelocidadeDeAtaque) * aumentoVelAtkPct);
+                target.AddStat(Stat.BonusVelocidadeAtaquePct, aumentoVelAtkPct);
                 break;
             case "disatk":
-                target.AddStat(Stat.DistanciaDoAtaque, target.GetStat(Stat.DistanciaDoAtaque) * aumentoDistAtkPct);
+                target.AddStat(Stat.BonusDistanciaAtaquePct, aumentoDistAtkPct);
                 break;
             case "def":
                 target.AddStat(Stat.DefesaFisica, aumentoDef);
                 break;
             case "velm":
-                target.AddStat(Stat.VelocidadeDeMovimento, target.GetStat(Stat.VelocidadeDeMovimento) * aumentoVelMovPct);
+                target.AddStat(Stat.BonusVelocidadeMovimentoPct, aumentoVelMovPct);
                 break;
             case "rouhp":
-                target.AddStat(Stat.RouboDeVida, aumentoRouHpPct);
+                target.AddStat(Stat.BonusRouboVidaPct, aumentoRouHpPct);
                 break;
             case "chacong":
-                target.AddStat(Stat.CongelamentoChance, aumentoChaCongPct);
+                target.AddStat(Stat.BonusCongelamentoChancePct, aumentoChaCongPct);
                 break;
             case "aumcura":
                 target.AddStat(Stat.BonusCuraPct, aumentoAumCuraPct);
@@ -168,25 +168,25 @@ public class VidaUI : MonoBehaviour
                 target.SetStat(Stat.VidaAtual, target.GetStat(Stat.VidaMaxima));
                 break;
             case "atk":
-                target.AddStat(Stat.AtaqueFisico, valor);
+                target.AddStat(Stat.BonusAtaqueFisicoPct, valor);
                 break;
             case "velatk":
-                target.AddStat(Stat.VelocidadeDeAtaque, valor);
+                target.AddStat(Stat.BonusVelocidadeAtaquePct, valor);
                 break;
             case "disatk":
-                target.AddStat(Stat.DistanciaDoAtaque, valor);
+                target.AddStat(Stat.BonusDistanciaAtaquePct, valor);
                 break;
             case "def":
                 target.AddStat(Stat.DefesaFisica, valor);
                 break;
             case "velm":
-                target.AddStat(Stat.VelocidadeDeMovimento, valor);
+                target.AddStat(Stat.BonusVelocidadeMovimentoPct, valor);
                 break;
             case "rouhp":
-                target.AddStat(Stat.RouboDeVida, valor);
+                target.AddStat(Stat.BonusRouboVidaPct, valor);
                 break;
             case "chacong":
-                target.AddStat(Stat.CongelamentoChance, valor);
+                target.AddStat(Stat.BonusCongelamentoChancePct, valor);
                 break;
             case "aumcura":
                 target.AddStat(Stat.BonusCuraPct, valor);

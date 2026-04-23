@@ -59,7 +59,7 @@ public class LojaIten : MonoBehaviour
         }
         
     }
-    void RefresfLoja()
+    public void RefresfLoja()
     {
         GameObject[] loja_buttons = GameObject.FindGameObjectsWithTag("itenDaLoja");
         foreach(GameObject go in loja_buttons) {

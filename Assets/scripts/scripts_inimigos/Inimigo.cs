@@ -24,7 +24,7 @@ public class Inimigo : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         // Configura status do inimigo
-        status.SetStat(Stat.VidaMaxima, 100f);
+        status.SetStat(Stat.VidaMaxima, 25f);
         status.SetStat(Stat.VidaAtual, status.GetStat(Stat.VidaMaxima));
 
         status.SetStat(Stat.AtaqueFisico, danoFisico);
