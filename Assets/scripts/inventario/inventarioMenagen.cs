@@ -63,7 +63,10 @@ public class inventarioMenagen : MonoBehaviour
 
     void RefrecheInventario()
     {
-        gold_text.text = gold_coins.ToString();
+        if (gold_text != null)
+        {
+            gold_text.text = gold_coins.ToString();
+        }
 
         foreach (Transform child in inv_Fundo.transform)
         {
@@ -76,22 +79,57 @@ public class inventarioMenagen : MonoBehaviour
         {
             GameObject slot_intance = Instantiate(inv_slot, inv_Fundo.transform);
 
-            Image img = slot_intance.GetComponentInChildren<Image>();
+            Transform fundoTransform = slot_intance.transform.Find("fundo");
+            Transform iconTransform = slot_intance.transform.Find("icon");
+            Transform hotkeyTransform = slot_intance.transform.Find("icon/Hotkey");
+
+            Image fundoImage = fundoTransform != null ? fundoTransform.GetComponent<Image>() : null;
+            Image iconImage = iconTransform != null ? iconTransform.GetComponent<Image>() : null;
             Outline outline = slot_intance.GetComponentInChildren<Outline>();
+            bool isSelected = selected_slot == hotkey_;
 
             if (w == null)
             {
-                img.enabled = false;
+                if (fundoImage != null)
+                {
+                    fundoImage.color = isSelected ? Color.yellow : Color.white;
+                }
+
+                if (iconImage != null)
+                {
+                    iconImage.enabled = true;
+                    iconImage.color = new Color(1f, 1f, 1f, 0f);
+                }
             }
             else
             {
-                img.enabled = true;
-                img.sprite = w.weopon_icon;
+                if (fundoImage != null)
+                {
+                    fundoImage.color = isSelected ? Color.yellow : Color.wheat;
+                }
 
-                outline.enabled = (selected_slot == hotkey_);
+                if (iconImage != null)
+                {
+                    iconImage.enabled = true;
+                    iconImage.sprite = w.weopon_icon;
+                    iconImage.color = Color.white;
+                }
+
             }
 
-            slot_intance.GetComponentInChildren<Text>().text = hotkey_.ToString();
+            if (outline != null)
+            {
+                outline.enabled = isSelected;
+            }
+
+            if (hotkeyTransform != null)
+            {
+                Text hotkeyText = hotkeyTransform.GetComponent<Text>();
+                if (hotkeyText != null)
+                {
+                    hotkeyText.text = hotkey_.ToString();
+                }
+            }
             hotkey_++;
         }
     }

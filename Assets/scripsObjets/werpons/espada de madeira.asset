@@ -19,7 +19,7 @@ MonoBehaviour:
   danoGelo: 0
   danoEletrico: 0
   weopon_speed: 3
-  weopon_distancia: 2
+  weopon_distancia: 1
   bonusStunChance: 0
   bonusCongelamentoChance: 0
   weopon_icon: {fileID: 789036144662840244, guid: 1065bea9b64fcee489e9eb6dd4c314f6, type: 3}

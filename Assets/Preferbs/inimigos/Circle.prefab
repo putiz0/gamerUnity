@@ -275,6 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entitystatus
   intervaloDanoCongelado: 0.5
   spamw_Menege: {fileID: 0}
+  morterParticulas: {fileID: 8194992990867289339, guid: 99bc28c0d45f51c4fbac01080b73edc7, type: 3}
 --- !u!50 &-6901033676555024160
 Rigidbody2D:
   serializedVersion: 5

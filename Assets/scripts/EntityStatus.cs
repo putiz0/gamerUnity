@@ -16,6 +16,9 @@ public class EntityStatus : MonoBehaviour
     bool morreu = false;
     private SpriteRenderer spriteRenderer;
     private Color corOriginal;
+    //particulas
+    public GameObject morterParticulas;
+
 
     protected virtual void Awake()
     {
@@ -385,6 +388,7 @@ public class EntityStatus : MonoBehaviour
         {
             spamw_Menege.inimigos_live--;
         }
+        Instantiate(morterParticulas, gameObject.transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
